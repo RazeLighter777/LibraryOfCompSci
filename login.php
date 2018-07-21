@@ -10,6 +10,7 @@ if (isset($_POST['submitted']) )
 		$users = $db->query( "SELECT * FROM user_credentials WHERE username = '" . $_POST['username'] . "'") or die("failed");
 		if($users->num_rows == 0) {
 			print("<h1>Password or username incorrect!</h1>");
+			print(password_hash($_POST['password'], PASSWORD_DEFAULT));
 			exit();
 		}
 		
